@@ -1,17 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Button from '@mui/material/Button';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-     
-      <h1>opt cart</h1>
-    </>
-  )
+    <div>
+      <Button 
+        variant="contained" 
+        sx={{
+          backgroundColor: 'green',
+          color: 'white',
+          '&:hover': { backgroundColor: 'darkgreen' },
+        }}
+      >
+        Custom Styled Button
+      </Button>
+    </div>
+  );
 }
 
-export default App
+export default App;
