@@ -1,18 +1,15 @@
-import Button from '@mui/material/Button';
+import { Route, Routes } from 'react-router-dom';
+import LoginCard from './pages/auth/login';
 
 function App() {
   return (
     <div>
-      <Button 
-        variant="contained" 
-        sx={{
-          backgroundColor: 'green',
-          color: 'white',
-          '&:hover': { backgroundColor: 'darkgreen' },
-        }}
-      >
-        Custom Styled Button
-      </Button>
+      <p>
+        home page
+      </p>
+    <Routes>
+      <Route path='auth/login' element={<LoginCard/>}/>
+    </Routes>
     </div>
   );
 }
