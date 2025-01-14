@@ -76,7 +76,7 @@ export default function Editmodal() {
 
               <TextField id="email" label="Email" variant="outlined" type="email" />
 
-              <Button variant="contained" color="primary" onClick={() => handleClose()}>
+              <Button variant="contained" color="primary"  onClick={() => handleClose()}>
                 Submit
               </Button>
             </Box>

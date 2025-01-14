@@ -23,9 +23,9 @@ const rows = [
 
 const  Employeemangement=()=> {
   return (
-<Box>
+<Box sx={{padding:'10px'}}>
 
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} >
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -64,7 +64,7 @@ const  Employeemangement=()=> {
     flexDirection: 'column',
     padding: '30px',
     marginTop:5,
-    width:'500px',
+    width:'600px',
     boxShadow:3
   }}
   noValidate

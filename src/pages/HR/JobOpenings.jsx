@@ -5,10 +5,10 @@ import Editmodal from "../../components/Modals/EditJobOpenings"
 const JobOpenings = () => {
   return (
     <Box >
-        <Box sx={{display:'flex',justifyContent:'center', marginTop:'10px'}}>
+        <Box sx={{display:'flex',justifyContent:'end', marginTop:'10px', marginRight:'15px'}}>
           <UseModal/>
         </Box>
-        <Card sx={{ minHeight: 150 }}>
+        <Card sx={{ minHeight: 150,margin:'15px'}}>
       <CardContent>
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
          
