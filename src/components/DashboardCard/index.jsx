@@ -10,16 +10,19 @@ const icons = {
   staff: <Group fontSize="large" />,
 };
 
-function DashboardCard({ title, value, icon }) {
+function DashboardCard({ title, value, icon ,description}) {
   return (
     <Card sx={{ minHeight: 150 }}>
       <CardContent>
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           {icons[icon]}
           <Box>
-            <Typography variant="h6">{title}</Typography>
+            <Typography variant="h4">{title}</Typography>
             <Typography variant="h4" fontWeight="bold">
               {value}
+            </Typography>
+            <Typography variant="h6">
+              {description}
             </Typography>
           </Box>
         </Box>
