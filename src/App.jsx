@@ -6,6 +6,7 @@ import Dashboard from './pages/Admin/AdminDashboard';
 import Employeemangement from './pages/HR/EmployeeManggement';
 import JobOpenings from './pages/HR/JobOpenings';
 import AttendenceandLeave from './pages/HR/Attendence&Leave';
+import { Box } from '@mui/material';
 
 function App() {
   const location=useLocation()
@@ -16,20 +17,23 @@ function App() {
   }
   return (
     <>
-    <div>
+    <Box sx={{display:'flex', flexDirection:'row'}}>
       <div>
       {!noSidebarPaths.includes(location.pathname) && <Sidebar />}
       </div>
-    <Routes>
-      <Route path='/' element = {<Home/>}/>
+      <div style={{marginLeft:'250px', width:'155vh'}}>
+      <Routes>
       <Route path='auth/login' element={<LoginCard/>}/>
+      <Route path='/' element = {<Home/>}/>
       <Route path='/admin/dashboard' element= {<Dashboard/>}/>
       <Route path='/hr/employeemangement' element= {<Employeemangement/>}/>
       <Route path='/hr/jobopenings' element= {<JobOpenings/>}/>
       <Route path='/hr/AttendanceAndLeave' element= {<AttendenceandLeave/>}/>
-      
     </Routes>
-    </div>
+   
+      </div>
+       
+    </Box>
     </>
     
   );

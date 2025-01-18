@@ -1,67 +1,53 @@
-import  { useState } from "react";
-import { Box, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, IconButton } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  // Toggle the sidebar
-  const toggleDrawer = (open) => (event) => {
-    if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
-      return;
-    }
-    setIsOpen(open);
-  };
-
+  const navigate=useNavigate()
   const menuItems = [
-    { text: "Home", icon: <HomeIcon /> },
-    { text: "About", icon: <InfoIcon /> },
-    { text: "Contact", icon: <ContactMailIcon /> },
+    { text: "Home", icon: <HomeIcon />, path:'/hr/employeemangement' },
+    { text: "Job Openings", icon: <InfoIcon /> ,path:'/hr/jobopenings' },
+    { text: "Leave and request", icon: <ContactMailIcon />, path:'/hr/AttendanceAndLeave' },
   ];
 
   return (
-    <Box>
-      {/* Top Bar with Menu Button */}
+    <Box sx={{  height: "100vh", position:'relative'}}>
+      {/* Static Sidebar */}
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
-          padding: "10px 20px",
+          width:250,
           backgroundColor: "#3F72AF",
           color: "#F9F7F7",
+          padding: "20px 10px",
+          height:'150vh',
+          position:'fixed'
+        
         }}
       >
-        <IconButton onClick={toggleDrawer(true)} sx={{ color: "white" }}>
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" sx={{ marginLeft: 2 }}>
+        <Typography variant="h6" sx={{ marginBottom: 2, textAlign: "center" }}>
           My App
         </Typography>
+        <List>
+          {menuItems.map((item, index) => (
+            <ListItem key={index} disablePadding>
+              <ListItemButton>
+                <ListItemIcon sx={{ color: "#F9F7F7" }}>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} onClick={()=>navigate(item.path)} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
       </Box>
 
-      {/* Drawer Component */}
-      <Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
-        <Box
-          sx={{ width: 250 }}
-          role="presentation"
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <List>
-            {menuItems.map((item, index) => (
-              <ListItem key={index} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      </Drawer>
+      {/* Main Content */}
+      {/* <Box sx={{ flexGrow: 1, padding: "20px" }}>
+        <Typography variant="h4">Welcome to My App</Typography>
+        <Typography>
+          This is the main content area. The sidebar remains visible on the left.
+        </Typography>
+      </Box> */}
     </Box>
   );
 };
