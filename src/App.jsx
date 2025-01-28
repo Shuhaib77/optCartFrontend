@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes,  } from "react-router-dom";
 // import LoginCard from "./pages/auth/Login";
 // import Sidebar from "./components/Common/Sidebar";
 import Home from "./pages/HomePage";
@@ -6,7 +6,7 @@ import Home from "./pages/HomePage";
 // import Employeemangement from "./pages/HR/EmployeeManggement";
 // import JobOpenings from "./pages/HR/JobOpenings";
 // import AttendenceandLeave from "./pages/HR/Attendence&Leave";
-import { Box, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import theme from "./Atoms/Themecolor/Theme";
 // import Create_admin from "./pages/Super_admin/Create_admin";
 // import Super_admin_dashboard from "./pages/Super_admin/Super_admin_dashboard";
@@ -19,8 +19,8 @@ import Login from "./pages/auth/login";
 // import LoginCard from "./pages/auth/login";
 
 function App() {
-  const location = useLocation();
-  const noSidebarPaths = ["/"];
+  // const location = useLocation();
+  // const noSidebarPaths = ["/"];
 
   return (
     <>

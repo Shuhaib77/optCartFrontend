@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Box, FormControl, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import StyledButton from "../../Atoms/Buttons";
@@ -10,13 +10,14 @@ import axios from "axios";
 function Authentication() {
   const navigate = useNavigate();
   const val = "admin";
+  const url = 'createadmin'
 
-  const { handleBlur, handleChange, handleSubmit, errors, values } = useFormik({
+  const { handleBlur, handleChange, handleSubmit, values } = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    onSubmit: async (values) => {
+    onSubmit: async () => {
       axios.post("");
     },
   });
@@ -111,7 +112,7 @@ function Authentication() {
                 type="submit"
                 sx={{ bgcolor: "rgb(64, 202, 97)", width: "85%" }}
                 onClick={() => {
-                  navigate(`/dashboard/${val}/${url}}`);
+                  navigate(`/dashboard/${val}/${url}`);
                 }}
               >
                 LOGIN

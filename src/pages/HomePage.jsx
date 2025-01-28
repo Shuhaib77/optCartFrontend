@@ -1,6 +1,5 @@
 import { Box } from "@mui/material";
 import StyledButton from "../Atoms/Buttons";
-import StyledInput from "../Atoms/Styled_inputs/Input";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
@@ -405,7 +404,6 @@ const Home = () => {
           color: "white",
           height: 1,
           backgroundColor: "black",
-          justifyContent: "center",
           alignContent: "center",
         }}
       >

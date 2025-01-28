@@ -1,32 +1,20 @@
-import { Box, Typography } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+/* eslint-disable react/prop-types */
+import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import { useNavigate,} from "react-router-dom";
+import { useEffect, useState } from "react";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const Sidebar = ({
-  user_item,
-  admin_item,
-  super_item,
-  hr_item,
-role,
-}) => {
-  const navigate = useNavigate();
-  // console.log(values, "bdbxc");
-  const [dropDown, setdrpdown] = useState(false);
+const Sidebar = ({ demo, role, val }) => {
+  const [data, setData] = useState([]);
+ // State to track which dropdown is open
+const navigate = useNavigate()
 
-  // const menuItems = [
-  //   { text: "Home", icon: <HomeIcon />, path: "/hr/employeemangement" },
-  //   { text: "Job Openings", icon: <InfoIcon />, path: "/hr/jobopenings" },
-  //   {
-  //     text: "Leave and request",
-  //     icon: <ContactMailIcon />,
-  //     path: "/hr/AttendanceAndLeave",
-  //   },
-  // ];
+  useEffect(() => {
+    // Filter data based on role and update the state
+    const filteredData = demo.filter((e) => e.role ==val );
+    setData(filteredData);
 
-  // console.log(values, "sxed");
-
-  const { val } = useParams();
-  console.log(val, "sofffyt");
+  }, [role]);
 
   return (
     <Box sx={{ height: "100vh" }}>
@@ -37,15 +25,12 @@ role,
           backgroundColor: "white",
           color: "background.default",
           boxShadow: "5px 5px rgba(230, 171, 171, 0.02)",
-
-          // padding: "30px 10px",
           height: "100vh",
+          padding: "10px",
         }}
       >
         <Typography
-          // variant="h6"
           sx={{
-            // marginBottom: 2,
             textAlign: "center",
             fontSize: "25px",
             fontWeight: "bold",
@@ -54,218 +39,33 @@ role,
         >
           {role}
         </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <div style={{}}>
-            {hr_item
-              ? hr_item.map((item, index) => {
-                  return (
-                    <div key={index}>
-                      <div
-                        style={{}}
-                        onClick={() => {
-                          dropDown ? setdrpdown(false) : setdrpdown(true);
-                        }}
-                      >
-                        <li style={{ fontSize: "20px", marginRight: 5 }}>
-                          {Object.keys(item)}
-                          <span>
-                            {" "}
-                            {dropDown ? (
-                              <i
-                                class="fa-solid fa-caret-up"
-                                style={{ color: "background.default" }}
-                              ></i>
-                            ) : (
-                              <i
-                                class="fa-solid fa-caret-down "
-                                style={{ color: "background.default" }}
-                              ></i>
-                            )}
-                          </span>
-                        </li>
-                        <div>
-                          {item?.user_management.map((item) => {
-                            return (
-                              <div
-                                style={{
-                                  display: dropDown ? "block" : "none",
-                                  fontSize: "18px",
-                                  marginLeft: "20px",
-                                }}
-                                onClick={() => {
-                                  console.log(item.url);
 
-                                  navigate(`/dashboard/${val}/${item.url}`);
-                                }}
-                              >
-                                <li>{item.value}</li>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })
-              : admin_item
-              ? admin_item.map((item, index) => {
-                  return (
-                    <div key={index}>
-                      <div
-                        style={{}}
-                        onClick={() => {
-                          dropDown ? setdrpdown(false) : setdrpdown(true);
-                        }}
+        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between" }}>
+          <Box>
+            {data[0]?.value?.map((e, i) => (
+              <Accordion key={i} sx={{ width: "100%", marginBottom: "10px" }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls={`panel-${i}-content`}
+                  id={`panel-${i}-header`}
+                >
+                  <Typography sx={{ fontWeight: "bold" }}>{e.value}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  {e?.data?.map((m, index) => (
+                    <Box key={index} sx={{ paddingLeft: "20px", cursor: 'pointer'}}
+                    onClick={()=>navigate(`/dashboard/${val}/${m?.url}`)}
+                    >
+                      <Typography 
+                      component='li'
                       >
-                        <li style={{ fontSize: "20px", marginRight: 5 }}>
-                          {Object.keys(item)}
-                          <span>
-                            {" "}
-                            {dropDown ? (
-                              <i
-                                class="fa-solid fa-caret-up"
-                                style={{ color: "background.default" }}
-                              ></i>
-                            ) : (
-                              <i
-                                class="fa-solid fa-caret-down "
-                                style={{ color: "background.default" }}
-                              ></i>
-                            )}
-                          </span>
-                        </li>
-                        <div>
-                          {item?.hrgfrh4ff.map((item) => {
-                            return (
-                              <div
-                                style={{
-                                  display: dropDown ? "block" : "none",
-                                  fontSize: "18px",
-                                  marginLeft: "20px",
-                                }}
-                                onClick={() => {
-                                  console.log(item.url, "w4tyhbvcv nf");
-                                  navigate(`/dashboard/${val}/${item.url}`);
-                                }}
-                              >
-                                <li>{item.value}</li>
-                                {/* <li>rfegteg</li>
-                  <li>rfegteg</li> */}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })
-              : super_item
-              ? super_item.map((item, index) => {
-                  return (
-                    <div key={index}>
-                      <div
-                        style={{}}
-                        onClick={() => {
-                          dropDown ? setdrpdown(false) : setdrpdown(true);
-                        }}
-                      >
-                        <li style={{ fontSize: "20px", marginRight: 5 }}>
-                          {Object.keys(item)}
-                          <span>
-                            {" "}
-                            {dropDown ? (
-                              <i
-                                class="fa-solid fa-caret-up"
-                                style={{ color: "background.default" }}
-                              ></i>
-                            ) : (
-                              <i
-                                class="fa-solid fa-caret-down "
-                                style={{ color: "background.default" }}
-                              ></i>
-                            )}
-                          </span>
-                        </li>
-                      </div>
-                      {item?.user_management.map((item) => {
-                        return (
-                          <div
-                            style={{
-                              display: dropDown ? "block" : "none",
-                              fontSize: "18px",
-                              marginLeft: "20px",
-                            }}
-                            onClick={() => {
-                              console.log(item.url);
-                              navigate(`/dashboard/${val}/${item.url}`);
-                            }}
-                          >
-                            <li>{item.value}</li>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  );
-                })
-              : user_item.map((item, index) => {
-                  return (
-                    <div key={index}>
-                      <div
-                        style={{}}
-                        onClick={() => {
-                          dropDown ? setdrpdown(false) : setdrpdown(true);
-                        }}
-                      >
-                        <li style={{ fontSize: "20px", marginRight: 5 }}>
-                          {Object.keys(item)}
-                          <span>
-                            {" "}
-                            {dropDown ? (
-                              <i
-                                class="fa-solid fa-caret-up"
-                                style={{ color: "background.default" }}
-                              ></i>
-                            ) : (
-                              <i
-                                class="fa-solid fa-caret-down "
-                                style={{ color: "background.default" }}
-                              ></i>
-                            )}
-                          </span>
-                        </li>
-                        <div>
-                          {item?.user_management.map((item) => {
-                            return (
-                              <div
-                                style={{
-                                  display: dropDown ? "block" : "none",
-                                  fontSize: "18px",
-                                  marginLeft: "20px",
-                                }}
-                                onClick={() => {
-                                  console.log(item.url);
-                                  navigate(`/dashboard/${val}/${item.url}`);
-                                }}
-                              >
-                                <li>{item.value}</li>
-                                {/* <li>rfegteg</li>
-                  <li>rfegteg</li> */}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-          </div>
+                        {m?.value}</Typography>
+                    </Box>
+                  ))}
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </Box>
         </Box>
       </Box>
     </Box>
