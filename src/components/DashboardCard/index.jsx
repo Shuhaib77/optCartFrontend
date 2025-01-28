@@ -19,10 +19,11 @@ function DashboardCard({ title, value, icon ,description}) {
           <Box>
             <Typography variant="h4">{title}</Typography>
             <Typography variant="h4" fontWeight="bold">
-              {value}
+              {value}h1
+              dwdwdw
             </Typography>
             <Typography variant="h6">
-              {description}
+              {description}cdcdec
             </Typography>
           </Box>
         </Box>
