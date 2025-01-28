@@ -1,5 +1,5 @@
 // export default JobOpenings
-import React from "react";
+// import React from "react";
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import UseModal from "../Modals/JobOpening";
 import Editmodal from "../Modals/EditJobOpenings";

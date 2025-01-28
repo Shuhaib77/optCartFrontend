@@ -11,9 +11,9 @@ import WcSharpIcon from "@mui/icons-material/WcSharp";
 
 // export default Employeemangement;
 
-import React from "react";
+// import React from "react";
 
-function EmployeeManggement() {
+function EmployeeManagement() {
   function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
   }
@@ -27,6 +27,7 @@ function EmployeeManggement() {
   ];
   return (
     <div>
+      
       <Box sx={{ padding: "10px", width:"100%" }}>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -131,4 +132,4 @@ function EmployeeManggement() {
   );
 }
 
-export default EmployeeManggement;
+export default EmployeeManagement;

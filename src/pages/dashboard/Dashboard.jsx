@@ -1,4 +1,3 @@
-import React from "react";
 import Sidebar from "../../components/Common/Sidebar";
 
 import Add_admine from "../../components/super_admin/Add_admine";
@@ -6,6 +5,9 @@ import { Box } from "@mui/material";
 // import DashboardCard from "../../components/DashboardCard";
 import { useParams } from "react-router-dom";
 import JobOpenings from "../../components/hr/JobOpenings";
+import Attendence_emoloye from "../../components/hr/Attendence_emoloye";
+import EmployeeManagement from "../../components/hr/EmployeeManggement";
+import AttendancePage from "../user";
 function Dashboard() {
   const { val } = useParams();
   console.log(val, "valll");
@@ -17,28 +19,142 @@ function Dashboard() {
       ? "User"
       : val === "admin"
       ? "Admin"
-      : val === "user"
-      ? "superadmin"
-      : "Hr";
+      : val === "superadmin"
+      ? "Superadmin"
+      : val === "hr"
+      ? "HR"
+      :"null";
 
-  const admin_item = [
+  const demo = [
     {
-      hrgfrh4ff: [
-        { value: "Add User", icon: "user", url: "amincreate" },
+      id: 1,
+      name: "home",
+      value: [
         {
-          value: "View Attendance",
+          value: "user_managementr",
           icon: "user",
-          url: "AttendanceAndLeave",
+          url: "admincreate",
+          data: [
+            { value: "Add ", icon: "user", url: "add" },
+            { value: "Attendance", url: "attdancelist" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
         },
-        { value: "Product Management", icon: "user", url: "newwwww" },
+        {
+          value: "user",
+          icon: "user",
+          url: "AttendanceAndLeav",
+          data: [
+            { value: "Add ", icon: "user", url: "employeemangement" },
+            { value: "View ", icon: "user", url: "AttendanceAndLeave" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
+        },
       ],
-      user: [
-        { value: "Add User", icon: "user", url: "employeemangement" },
-        { value: "View Attendance", icon: "user", url: "AttendanceAndLeave" },
-        { value: "Product Management", icon: "user", url: "jobopenings" },
+      role: "user",
+    },
+    {
+      id: 2,
+      name: "home",
+      value: [
+        {
+          value: "admin",
+          icon: "user",
+          url: "admincreate",
+          data: [
+            { value: "Add ", icon: "user", url: "employeemangement" },
+            { value: "View ", icon: "user", url: "AttendanceAndLeave" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
+        },
+        {
+          value: "user",
+          icon: "user",
+          url: "AttendanceAndLeav",
+          data: [
+            { value: "Add ", icon: "user", url: "employeemangement" },
+            { value: "View ", icon: "user", url: "AttendanceAndLeave" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
+        },
       ],
+      role: "admin",
+    },
+    {
+      id: 3,
+      name: "home",
+      value: [
+        {
+          value: "user_managementr",
+          icon: "user",
+          url: "admincreate",
+          data: [
+            { value: "Attendance ", icon: "user", url: "attendanceandemployee" },
+            { value: "Employee ", icon: "user", url: "employeemanagement" },
+            { value: "Job ", icon: "user", url: "jobopenings" },
+          ],
+        },
+        {
+          value: "user",
+          icon: "user",
+          url: "AttendanceAndLeav",
+          data: [
+            { value: "Attendance ", icon: "user", url: "attendanceandemployee" },
+            { value: "View ", icon: "user", url: "AttendanceAndLeave" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
+        },
+      ],
+      role: "hr",
+    },
+    {
+      id: 1,
+      name: "home",
+      value: [
+        {
+          value: "user_managementr",
+          icon: "user",
+          url: "admincreate",
+          data: [
+            { value: "Add ", icon: "user", url: "employeemangement" },
+            { value: "View ", icon: "user", url: "AttendanceAndLeave" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
+        },
+        {
+          value: "user",
+          icon: "user",
+          url: "AttendanceAndLeav",
+          data: [
+            { value: "Add ", icon: "user", url: "adadmin" },
+            { value: "View ", icon: "user", url: "AttendanceAndLeave" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
+        },
+      ],
+      role: "superadmin",
     },
   ];
+
+  // const admin_item = [
+  //   {
+  //     user_management: [
+  //       { value: "Add User", icon: "user", url: "admincreate" },
+  //       {
+  //         value: "View Attendance",
+  //         icon: "user",
+  //         url: "AttendanceAndLeave",
+  //       },
+  //       { value: "Product Management", icon: "user", url: "newwwww" },
+  //     ],
+
+  //     user: [
+  //       { value: "Add ", icon: "user", url: "employeemangement" },
+  //       { value: "View ", icon: "user", url: "AttendanceAndLeave" },
+  //       { value: "Product ", icon: "user", url: "jobopenings" },
+  //     ],
+  //   },
+  // ];
   // const hr_item = [
   //   {
   //     user_management: [
@@ -46,6 +162,7 @@ function Dashboard() {
   //       { value: "View Attendance", icon: "user", url: "AttendanceAndLeave" },
   //       { value: "Product Management", icon: "user", url: "jobopenings" },
   //     ],
+
   //     user: [
   //       { value: "Add User", icon: "user", url: "employeemangement" },
   //       { value: "View Attendance", icon: "user", url: "AttendanceAndLeave" },
@@ -56,10 +173,11 @@ function Dashboard() {
   // const user_item = [
   //   {
   //     user_management: [
-  //       { value: "Add User", icon: "user", url: "adadmin" },
+  //       { value: "Add ", icon: "user", url: "adadmin" },
   //       { value: "View Attendance", icon: "user", url: "AttendanceAndLeave" },
   //       { value: "Product Management", icon: "user", url: "jobopenings" },
   //     ],
+
   //     user: [
   //       { value: "Add User", icon: "user", url: "employeemangement" },
   //       { value: "View Attendance", icon: "user", url: "AttendanceAndLeave" },
@@ -74,6 +192,7 @@ function Dashboard() {
   //       { value: "View Attendance", icon: "user", url: "AttendanceAndLeave" },
   //       { value: "Product Management", icon: "user", url: "jobopenings" },
   //     ],
+
   //     user: [
   //       { value: "Add User", icon: "user", url: "employeemangement" },
   //       { value: "View Attendance", icon: "user", url: "AttendanceAndLeave" },
@@ -85,13 +204,7 @@ function Dashboard() {
     <>
       <Box sx={{ display: "flex", justifyContent: "" }}>
         <Box>
-          <Sidebar
-            // user_item={user_item}
-            // hr_item={hr_item}
-            // super_item={super_item}
-            admin_item={admin_item}
-            role={role}
-          />
+          <Sidebar demo={demo} role={role} val={val}/>
         </Box>
         {
           // id.map((item) => {
@@ -99,6 +212,7 @@ function Dashboard() {
           val === "user" ? (
             <Box sx={{ width: "100%" }}>
               {url === "createadmin" && <Add_admine />}
+              {url === "attdancelist" && <AttendancePage/>}
             </Box>
           ) : val === "superadmin" ? (
             <Box sx={{ width: "100%" }}>
@@ -106,9 +220,15 @@ function Dashboard() {
             </Box>
           ) : val === "admin" ? (
             <Box sx={{ width: "100%" }}>
-              {url === "amincreate" && <Add_admine />}
+              {url === "admincreate" && <Add_admine />}
             </Box>
-          ) : (
+          ) : val === "hr"? (
+            <Box sx={{ width: "100%" }}>
+              {url === 'attendanceandemployee'&& <Attendence_emoloye/>}
+              {url === 'employeemanagement ' && <EmployeeManagement/>}
+              {url === "jobopenings" && <JobOpenings />}
+              </Box>
+          ):(
             <Box
               sx={{
                 flex: 1,
