@@ -28,7 +28,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Login />} />
-          <Route path="/dashboard/:val/:url" element={<Dashboard/>} />
+          <Route path="/:val/:url" element={<Dashboard/>} />
         </Routes>
       </ThemeProvider>
     </>

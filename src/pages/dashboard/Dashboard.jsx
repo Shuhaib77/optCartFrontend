@@ -8,6 +8,7 @@ import JobOpenings from "../../components/hr/JobOpenings";
 import Attendence_emoloye from "../../components/hr/Attendence_emoloye";
 import EmployeeManagement from "../../components/hr/EmployeeManggement";
 import AttendancePage from "../user";
+import HrDashboard from "../../components/hr/hr_dashboard";
 function Dashboard() {
   const { val } = useParams();
   console.log(val, "valll");
@@ -28,22 +29,46 @@ function Dashboard() {
   const demo = [
     {
       id: 1,
-      name: "home",
       value: [
         {
-          value: "user_managementr",
+          value:"Dashboard",
           icon: "user",
-          url: "admincreate",
+          url: "dashboard",
+        },
+        {
+          value: "Admin Management",
+          icon: "user",
+          url: "adminmanagement",
           data: [
-            { value: "Add ", icon: "user", url: "add" },
-            { value: "Attendance", url: "attdancelist" },
+            { value: "Admins", url: "admins" },
+            { value: "Add ", icon: "user", url: "addadmin" },
             { value: "Product ", icon: "user", url: "jobopenings" },
           ],
         },
         {
-          value: "user",
+          value: "Global Policy Configuration",
           icon: "user",
-          url: "AttendanceAndLeav",
+          url: "gloabalpolicyconfiguration",
+          data: [
+            { value: "Add ", icon: "user", url: "employeemangement" },
+            { value: "View ", icon: "user", url: "AttendanceAndLeave" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
+        },
+        {
+          value: "Analytics & Reporting",
+          icon: "user",
+          url: "analyticsandreporting",
+          data: [
+            { value: "Add ", icon: "user", url: "employeemangement" },
+            { value: "View ", icon: "user", url: "AttendanceAndLeave" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
+        },
+        {
+          value: "Audit Logs",
+          icon: "user",
+          url: "auditlogs",
           data: [
             { value: "Add ", icon: "user", url: "employeemangement" },
             { value: "View ", icon: "user", url: "AttendanceAndLeave" },
@@ -51,16 +76,20 @@ function Dashboard() {
           ],
         },
       ],
-      role: "user",
+      role: "superadmin",
     },
     {
       id: 2,
-      name: "home",
       value: [
         {
-          value: "admin",
+          value:"Dashboard",
           icon: "user",
-          url: "admincreate",
+          url: "dashboard",
+        },
+        {
+          value: "Branch Management",
+          icon: "user",
+          url: "branchmanagement",
           data: [
             { value: "Add ", icon: "user", url: "employeemangement" },
             { value: "View ", icon: "user", url: "AttendanceAndLeave" },
@@ -68,9 +97,29 @@ function Dashboard() {
           ],
         },
         {
-          value: "user",
+          value: "Employee Management",
           icon: "user",
-          url: "AttendanceAndLeav",
+          url: "employeemanagement",
+          data: [
+            { value: "Add ", icon: "user", url: "employeemangement" },
+            { value: "View ", icon: "user", url: "AttendanceAndLeave" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
+        },
+        {
+          value: "Operational Oversight",
+          icon: "user",
+          url: "operationaloversight",
+          data: [
+            { value: "Add ", icon: "user", url: "employeemangement" },
+            { value: "View ", icon: "user", url: "AttendanceAndLeave" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
+        },
+        {
+          value: "Reporting & Audits",
+          icon: "user",
+          url: "reportingandaudits",
           data: [
             { value: "Add ", icon: "user", url: "employeemangement" },
             { value: "View ", icon: "user", url: "AttendanceAndLeave" },
@@ -82,25 +131,49 @@ function Dashboard() {
     },
     {
       id: 3,
-      name: "home",
       value: [
         {
-          value: "user_managementr",
+          value:"Dashboard",
           icon: "user",
-          url: "admincreate",
+          url: "dashboard",
+        },
+        {
+          value: "Recruitment",
+          icon: "user",
+          url: "recruitment",
           data: [
-            { value: "Attendance ", icon: "user", url: "attendanceandemployee" },
+            { value: "Job Openings ", icon: "user", url: "jobopenings" },
             { value: "Employee ", icon: "user", url: "employeemanagement" },
             { value: "Job ", icon: "user", url: "jobopenings" },
           ],
         },
         {
-          value: "user",
+          value: "Employee Onboarding",
           icon: "user",
-          url: "AttendanceAndLeav",
+          url: "employeeonboarding",
+          data: [
+            { value: "View ", icon: "user", url: "employeemanagementf" },
+            { value: "Add employees ", icon: "user", url: "employeemanagement" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
+        },
+        {
+          value: "Payroll Management",
+          icon: "user",
+          url: "payrollmanagement",
           data: [
             { value: "Attendance ", icon: "user", url: "attendanceandemployee" },
             { value: "View ", icon: "user", url: "AttendanceAndLeave" },
+            { value: "Product ", icon: "user", url: "jobopenings" },
+          ],
+        },
+        {
+          value: "Attendance & Leave Tracking",
+          icon: "user",
+          url: "attendanceandleavetracking",
+          data: [
+            { value: "Attendance ", icon: "user", url: "attdancelist" },
+            { value: "Approve Leaves ", icon: "user", url: "attendanceemployee" },
             { value: "Product ", icon: "user", url: "jobopenings" },
           ],
         },
@@ -108,9 +181,13 @@ function Dashboard() {
       role: "hr",
     },
     {
-      id: 1,
-      name: "home",
+      id: 4,
       value: [
+        {
+          value:"Dashboard",
+          icon: "user",
+          url: "dashboard",
+        },
         {
           value: "user_managementr",
           icon: "user",
@@ -126,13 +203,13 @@ function Dashboard() {
           icon: "user",
           url: "AttendanceAndLeav",
           data: [
-            { value: "Add ", icon: "user", url: "adadmin" },
+            { value: "Add ", icon: "user", url: "attdancelist" },
             { value: "View ", icon: "user", url: "AttendanceAndLeave" },
             { value: "Product ", icon: "user", url: "jobopenings" },
           ],
         },
       ],
-      role: "superadmin",
+      role: "user",
     },
   ];
 
@@ -212,11 +289,10 @@ function Dashboard() {
           val === "user" ? (
             <Box sx={{ width: "100%" }}>
               {url === "createadmin" && <Add_admine />}
-              {url === "attdancelist" && <AttendancePage/>}
             </Box>
           ) : val === "superadmin" ? (
             <Box sx={{ width: "100%" }}>
-              {url === "adadmin" && <Add_admine />}
+              {url === "addadmin" && <Add_admine />}
             </Box>
           ) : val === "admin" ? (
             <Box sx={{ width: "100%" }}>
@@ -224,8 +300,10 @@ function Dashboard() {
             </Box>
           ) : val === "hr"? (
             <Box sx={{ width: "100%" }}>
-              {url === 'attendanceandemployee'&& <Attendence_emoloye/>}
-              {url === 'employeemanagement ' && <EmployeeManagement/>}
+              {url === 'dashboard' && <HrDashboard/>}
+              {url === "attdancelist" && <AttendancePage/>}
+              {url === 'attendanceemployee'&& <Attendence_emoloye/>}
+              {url === 'employeemanagement' &&  <EmployeeManagement/>}
               {url === "jobopenings" && <JobOpenings />}
               </Box>
           ):(
@@ -237,7 +315,7 @@ function Dashboard() {
                 overflow: "auto",
               }}
             >
-              {url === "admin/adadmin" || <JobOpenings />}
+              {url === "admin/adadmin" }
             </Box>
           )
         }

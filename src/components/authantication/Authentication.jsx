@@ -10,7 +10,6 @@ import axios from "axios";
 function Authentication() {
   const navigate = useNavigate();
   const val = "admin";
-  const url = 'createadmin'
 
   const { handleBlur, handleChange, handleSubmit, values } = useFormik({
     initialValues: {
@@ -112,7 +111,7 @@ function Authentication() {
                 type="submit"
                 sx={{ bgcolor: "rgb(64, 202, 97)", width: "85%" }}
                 onClick={() => {
-                  navigate(`/dashboard/${val}/${url}`);
+                  navigate(`/${val}/dashboard`);
                 }}
               >
                 LOGIN
