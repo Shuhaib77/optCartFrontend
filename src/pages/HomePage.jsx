@@ -32,7 +32,7 @@ const Home = () => {
         </Box>
         <Box sx={{ w: 1 / 3,display:"flex",columnGap:5,justifyContent:"center",alignItems:"center" }}>
              <h5>search</h5>
-          <StyledButton sx={{backgroundColor:"rgb(64, 202, 97)",width:"200px",height:"50px"}} onClick={()=>{navigate("/")}} >LOGIN</StyledButton>
+          <StyledButton sx={{backgroundColor:"rgb(64, 202, 97)",width:"200px",height:"50px"}} onClick={()=>{navigate("/login")}} >LOGIN</StyledButton>
         </Box>
       </Box>
       <Box sx={{ background: "green", width: 1, display: "flex" }}>
