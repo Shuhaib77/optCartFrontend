@@ -1,14 +1,13 @@
 import Sidebar from "../../components/Common/Sidebar";
-
 import Add_admine from "../../components/super_admin/Add_admine";
 import { Box } from "@mui/material";
-// import DashboardCard from "../../components/DashboardCard";
 import { useParams } from "react-router-dom";
 import JobOpenings from "../../components/hr/JobOpenings";
 import Attendence_emoloye from "../../components/hr/Attendence_emoloye";
 import EmployeeManagement from "../../components/hr/EmployeeManggement";
 import AttendancePage from "../user";
 import HrDashboard from "../../components/hr/hr_dashboard";
+
 function Dashboard() {
   const { val } = useParams();
   console.log(val, "valll");
